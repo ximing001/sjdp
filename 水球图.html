@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-<div id="liquidfill-chart" style="width: 600px;height:400px;"></div>
+<div id="liquidfill-chart" style="width: 450px;height:170px;"></div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('liquidfill-chart'));
@@ -20,28 +20,28 @@
     var value1 = 0.76;
     var data = [value, value1];
     var option = {
-        backgroundColor: '#0F224C',
+        backgroundColor: '#fff',
         title: [
             {
-                text: '本年收缴率',
-                x: '22%',
+                text: '待处理',
+                x: '20%',
                 y: '70%',
                 textStyle: {
                     fontSize: 14,
                     fontWeight: '100',
-                    color: '#5dc3ea',
+                    color: '#000',
                     lineHeight: 16,
                     textAlign: 'center',
                 },
             },
             {
-                text: '本月收缴率',
-                x: '73%',
+                text: '处理中',
+                x: '70%',
                 y: '70%',
                 textStyle: {
                     fontSize: 14,
                     fontWeight: '100',
-                    color: '#5dc3ea',
+                    color: '#000',
                     lineHeight: 16,
                     textAlign: 'center',
                 },
@@ -61,7 +61,7 @@
                         y2: 1,
                         colorStops: [
                             {
-                                offset: 0,
+                                offset: 1,
                                 color: '#446bf5',
                             },
                             {
@@ -81,7 +81,7 @@
                     normal: {
                         textStyle: {
                             fontSize: 50,
-                            color: '#fff',
+                            color: '#000',
                         },
                     },
                 },
@@ -90,7 +90,7 @@
                     borderDistance: 0,
                     itemStyle: {
                         borderWidth: 2,
-                        borderColor: '#112165',
+                        borderColor: '#000',
                     },
                 },
             },
@@ -123,13 +123,13 @@
                 data: [value1, value1], // data个数代表波浪数
                 backgroundStyle: {
                     borderWidth: 1,
-                    color: 'RGBA(51, 66, 127, 0.7)',
+                    color: 'RGBA(61, 66, 127, 0.7)',
                 },
                 label: {
                     normal: {
                         textStyle: {
                             fontSize: 28,
-                            color: '#fff',
+                            color: '#000',
                         },
                     },
                 },
@@ -138,7 +138,7 @@
                     borderDistance: 0,
                     itemStyle: {
                         borderWidth: 2,
-                        borderColor: '#112165',
+                        borderColor: '#000',
                     },
                 },
             },
