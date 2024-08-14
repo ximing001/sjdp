@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>饼图</title>
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+  <script src="echarts.js"></script>
+</head>
+<body>
+<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+
+  // 指定图表的配置项和数据
+  var ydata = [{
+    name: '园区服务',
+    value: 18
+  },
+    {
+      name: '三方服务',
+      value: 16
+    },
+    {
+      name: '金融服务',
+      value: 15
+    },
+    {
+      name: '政策申报服务',
+      value: 14
+    },
+    {
+      name: '知识产权服务',
+      value: 10
+    },
+    {
+      name: '财税服务',
+      value: 7.9
+    },
+    {
+      name: '创业服务',
+      value: 6.7
+    },
+    {
+      name: '法律服务',
+      value: 6
+    },
+    {
+      name: '上市服务',
+      value: 4.5
+    },
+    {
+      name: '业务服务',
+      value: 3
+    }
+  ];
+  var color = ["#8d7fec", "#5085f2","#e75fc3","#f87be2","#f2719a","#fca4bb","#f59a8f","#fdb301","#57e7ec","#cf9ef1"]
+  var xdata = ['园区服务', "三方服务", "金融服务", "政策申报服务", '知识产权服务','财税服务','创业服务','法律服务','上市服务','业务服务'];
+
+
+  option = {
+    backgroundColor: "rgba(255,255,255,1)",
+    color:color,
+    legend: {
+      orient: "vartical",
+      x: "left",
+      top: "center",
+      left: "60%",
+      bottom: "0%",
+      data: xdata,
+      itemWidth: 8,
+      itemHeight: 8,
+      itemGap :16,
+      formatter :function(name){
+        return ''+name
+      }
+    },
+    series: [{
+      type: 'pie',
+      clockwise: false,
+      minAngle: 2,
+      radius: ["40%", "70%"],
+      center: ["30%", "50%"],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        normal: {
+          borderColor: '#ffffff',
+          borderWidth: 6,
+        },
+      },
+      label: {
+        normal: {
+          show: false,
+          position: 'center',
+          formatter: '{text|{b}}\n{c} ({d}%)',
+          rich: {
+            text: {
+              color: "#666",
+              fontSize: 14,
+              align: 'center',
+              verticalAlign: 'middle',
+              padding: 8
+            },
+            value: {
+              color: "#8693F3",
+              fontSize: 24,
+              align: 'center',
+              verticalAlign: 'middle',
+            },
+          }
+        },
+        emphasis: {
+          show: true,
+          textStyle: {
+            fontSize: 24,
+          }
+        }
+      },
+      data: ydata
+    }]
+  };
+  myChart.setOption(option);
+
+  setTimeout(function() {
+    myChart.on('mouseover', function(params) {
+      if (params.name == ydata[0].name) {
+        myChart.dispatchAction({
+          type: 'highlight',
+          seriesIndex: 0,
+          dataIndex: 0
+        });
+      } else {
+        myChart.dispatchAction({
+          type: 'downplay',
+          seriesIndex: 0,
+          dataIndex: 0
+        });
+      }
+    });
+
+    myChart.on('mouseout', function(params) {
+      myChart.dispatchAction({
+        type: 'highlight',
+        seriesIndex: 0,
+        dataIndex: 0
+      });
+    });
+    myChart.dispatchAction({
+      type: 'highlight',
+      seriesIndex: 0,
+      dataIndex: 0
+    });
+  }, 1000);
+
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+</script>
+</body>
+</html>
